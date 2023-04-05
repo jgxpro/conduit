@@ -20,12 +20,12 @@ jobs:
         python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-    - uses: actions/checkout@v3
     - name: Docker build for test
       run: docker-compose up -d    
     - name: Sleep for 60 seconds
       run: sleep 60s
       shell: bash
+    - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v4
       with:
