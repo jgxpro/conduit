@@ -25,6 +25,8 @@ class TestConduitPage:
     def teardown_method(self):
         self.page.close()
 
+    # Function to search the title of an article in all pages. It takes in a key for the dictionary for test data,
+    # and compares it to the actual title in the cycle. Returns a variable whether the target was found.
     def search_article(self, key):
         found = 0
         for actual_page in self.page.pagination():
@@ -44,6 +46,8 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_01')
     @allure.title('Accept cookies')
+    @allure.description('It calls the subpage opening function of POM (Page Object Model), which '
+                        'includes accepting cookies.\nAssert: whether the cookie panel appears after page refresh.')
     def test_cookie(self):
         self.page.open_sub('register')
         time.sleep(2)
