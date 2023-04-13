@@ -1,0 +1,31 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Apr 13 14:07:36 GMT 2023","Thu Apr 13 14:07:38 GMT 2023","2660","Conduit_code.Main","test_main","TestConduitPage","","","Accept cookies","It calls the subpage opening function of POM (Page Object Model), which includes accepting cookies.
+Assert: whether the cookie panel appears after page refresh."
+"passed","Thu Apr 13 14:07:57 GMT 2023","Thu Apr 13 14:08:27 GMT 2023","29972","Conduit_code.Main","test_main","TestConduitPage","","","Modify entered data","It calls the Login-subpage opening, then form filling function of POM to log in.
+After searching and opening the subpage for created article, the title is modified
+Assert: whether the article with modified title is found among the displayed articles"
+"passed","Thu Apr 13 14:07:39 GMT 2023","Thu Apr 13 14:07:43 GMT 2023","3580","Conduit_code.Main","test_main","TestConduitPage","","","Sign up - proper data","It calls the Register-subpage opening, then form filling function of POM to register.
+Assert: whether the success message appears in the layered confirmation field."
+"passed","Thu Apr 13 14:07:44 GMT 2023","Thu Apr 13 14:07:46 GMT 2023","2514","Conduit_code.Main","test_main","TestConduitPage","","","Sign in - proper data","It calls the Login-subpage opening, then form filling function of POM to log in.
+Assert: whether the username appeared in the upper right navigation bar."
+"passed","Thu Apr 13 14:09:09 GMT 2023","Thu Apr 13 14:09:14 GMT 2023","5578","Conduit_code.Main","test_main","TestConduitPage","","","Enter data from file","It calls the Login-subpage opening, then form filling function of POM to log in.
+After opening the subpage for 1st article, 3 comments are posted - read from a file.
+Assert: whether the text of displayed comments are the same as the list generated from file."
+"passed","Thu Apr 13 14:07:52 GMT 2023","Thu Apr 13 14:07:56 GMT 2023","3963","Conduit_code.Main","test_main","TestConduitPage","","","New data entry","It calls the Login-subpage opening, then form filling function of POM to log in.
+By clicking on 2nd navbar link, the subpage for article creation is opened, and filled in
+Assert: whether the button with text 'Post comment' appears justifying creation of article"
+"passed","Thu Apr 13 14:07:49 GMT 2023","Thu Apr 13 14:07:51 GMT 2023","1622","Conduit_code.Main","test_main","TestConduitPage","","","Visit all pages","It calls the Login-subpage opening, then form filling function of POM to log in.
+Then all the pages in the lower navigaton bar are visited
+Assert: whether parent of the clickable last element of page-links turned active"
+"passed","Thu Apr 13 14:09:19 GMT 2023","Thu Apr 13 14:09:23 GMT 2023","3548","Conduit_code.Main","test_main","TestConduitPage","","","Logout","It calls the Login-subpage opening, then form filling function of POM to log in.
+By clicking on last navbar link, logging out is activated
+Assert: whether the 2nd link of navbar turned into 'Sign in' = there's no logged in user"
+"passed","Thu Apr 13 14:09:15 GMT 2023","Thu Apr 13 14:09:18 GMT 2023","3149","Conduit_code.Main","test_main","TestConduitPage","","","Save data to file","It calls the Login-subpage opening, then form filling function of POM to log in.
+After opening Settings subpage, data (except for password) are collected into a dictionary,
+then written into a file.Assert: whether the data read from the created file are equal to the data in the dictionary."
+"passed","Thu Apr 13 14:08:28 GMT 2023","Thu Apr 13 14:09:08 GMT 2023","39928","Conduit_code.Main","test_main","TestConduitPage","","","Delete entered, modified data","It calls the Login-subpage opening, then form filling function of POM to log in.
+After searching and opening the subpage for modified article, the tarticle is deleted
+Assert: whether the deleted article can't be found among the displayed articles"
+"passed","Thu Apr 13 14:07:47 GMT 2023","Thu Apr 13 14:07:49 GMT 2023","1586","Conduit_code.Main","test_main","TestConduitPage","","","Collecting data into list","It calls the Login-subpage opening, then form filling function of POM to log in.
+Then the first rows of the inner text (= title of articles) are collected into a list.
+Assert: whether the collected list isn't empty."
