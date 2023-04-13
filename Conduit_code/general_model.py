@@ -1,5 +1,7 @@
+# The target of the modul is to provide a most basic backbone functionality of a page for POM (Page Object Model)
 from selenium import webdriver
 from datetime import datetime
+
 
 class GeneralPage:
 

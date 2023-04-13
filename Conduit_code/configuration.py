@@ -1,8 +1,5 @@
-"""
-A modul célja, hogy ne kelljen minden egyes példánál ismételni a megfelelő Chrome driver létrehozását.
-Importálás után elég a get_preconfigured_chrome_driver() függvényt meghívni.
-"""
-# import time
+# The target of the modul is to avoid the creation the appropriate Chrome driver in every occasion.
+# After import it's enough to call 'get_preconfigured_chrome_driver()' function.
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -13,18 +10,5 @@ def get_preconfigured_chrome_driver() -> webdriver.Chrome:
     s = Service(executable_path=ChromeDriverManager().install())
     o = Options()
     o.add_experimental_option('detach', True)
-    o.add_argument('--headless')
-    o.add_argument('--no-sandbox')
-    o.add_argument('--disable-dev-shm-usage')
 
     return webdriver.Chrome(service=s, options=o)
-
-
-# Csak példa a funkció használatára.
-# Más modulba importálva ez a rész nem fog lefutni.
-if __name__ == '__main__':
-
-    driver = get_preconfigured_chrome_driver()
-    driver.get('https://www.progmasters.hu')
-
-    driver.maximize_window()

@@ -56,14 +56,18 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_02')
     @allure.title('Sign up - proper data')
+    @allure.description('It calls the Register-subpage opening, then form filling function of POM to register.\n'
+                        'Assert: whether the success message appears in the layered confirmation field.')
     def test_signup(self):
         self.page.open_sub('register')
         self.page.fill_form(test_data)
-        time.sleep(2)
+        time.sleep(3)
         assert "Your registration was successful" in self.page.confirmation_field().text
 
     @allure.id('CON_ATC_03')
     @allure.title('Sign in - proper data')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'Assert: whether the username appeared in the upper right navigation bar.')
     def test_login(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -72,6 +76,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_04')
     @allure.title('Collecting data into list')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'Then the first rows of the inner text (= title of articles) are collected into a list.\n'
+                        "Assert: whether the collected list isn't empty.")
     def test_datalist(self):
         list_titles = []
         self.page.open_sub('login')
@@ -83,6 +90,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_05')
     @allure.title('Visit all pages')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'Then all the pages in the lower navigaton bar are visited\n'
+                        'Assert: whether parent of the clickable last element of page-links turned active')
     def test_pagination(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -93,6 +103,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_06')
     @allure.title('New data entry')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'By clicking on 2nd navbar link, the subpage for article creation is opened, and filled in\n'
+                        "Assert: whether the button with text 'Post comment' appears justifying creation of article")
     def test_new_data(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -104,6 +117,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_07')
     @allure.title('Modify entered data')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'After searching and opening the subpage for created article, the title is modified\n'
+                        'Assert: whether the article with modified title is found among the displayed articles')
     def test_modify_data(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -126,6 +142,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_08')
     @allure.title('Delete entered, modified data')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'After searching and opening the subpage for modified article, the tarticle is deleted\n'
+                        "Assert: whether the deleted article can't be found among the displayed articles")
     def test_delete_data(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -142,6 +161,9 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_09')
     @allure.title('Enter data from file')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'After opening the subpage for 1st article, 3 comments are posted - read from a file.\n'
+                        'Assert: whether the text of displayed comments are the same as the list generated from file.')
     def test_data_from_file(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -164,6 +186,10 @@ class TestConduitPage:
 
     @allure.id('CON_ATC_10')
     @allure.title('Save data to file')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'After opening Settings subpage, data (except for password) are collected into a dictionary,\n'
+                        'then written into a file.'
+                        'Assert: whether the data read from the created file are equal to the data in the dictionary.')
     def test_data_to_file(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
@@ -172,7 +198,7 @@ class TestConduitPage:
 
         settings_keys = []
         settings_dict = {}
-        for count, data in enumerate(self.page.form_field()[:-1]):
+        for data in self.page.form_field()[:-1]:
             settings_keys.append(data.get_property("placeholder"))
             settings_dict[f'{data.get_property("placeholder")}'] = data.get_property("value")
 
@@ -184,11 +210,13 @@ class TestConduitPage:
         with open('./Conduit_code/settings.csv', 'r') as file:
             settings_file = csv.DictReader(file, delimiter=',')
             for row in settings_file:
-                print(row, settings_dict)
                 assert row == settings_dict
 
     @allure.id('CON_ATC_11')
     @allure.title('Logout')
+    @allure.description('It calls the Login-subpage opening, then form filling function of POM to log in.\n'
+                        'By clicking on last navbar link, logging out is activated\n'
+                        "Assert: whether the 2nd link of navbar turned into 'Sign in' = there's no logged in user")
     def test_logout(self):
         self.page.open_sub('login')
         self.page.fill_form(test_data)
